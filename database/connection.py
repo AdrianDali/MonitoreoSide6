@@ -5,7 +5,7 @@ config = {
     'user': 'root',
     'password': '1234',
     'host': 'localhost',
-    'database': 'recipes_db'
+    'database': 'monitoreo_trabajo',
 }
 
 def create_connection():
