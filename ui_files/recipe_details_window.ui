@@ -104,7 +104,7 @@
                <string notr="true">color: white;</string>
               </property>
               <property name="text">
-               <string>Monitoreo de Proceso</string>
+               <string>Recipes Organizer</string>
               </property>
              </widget>
             </item>
@@ -142,7 +142,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../../pys6-recipes-organizer/assets/icons/minimize-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/minimize-window.png</iconset>
+                 <normaloff>../assets/icons/minimize-window.png</normaloff>../assets/icons/minimize-window.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -165,7 +165,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../../pys6-recipes-organizer/assets/icons/restore-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/restore-window.png</iconset>
+                 <normaloff>../assets/icons/restore-window.png</normaloff>../assets/icons/restore-window.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -188,7 +188,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../../pys6-recipes-organizer/assets/icons/maximize-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/maximize-window.png</iconset>
+                 <normaloff>../assets/icons/maximize-window.png</normaloff>../assets/icons/maximize-window.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -211,7 +211,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../../pys6-recipes-organizer/assets/icons/close-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/close-window.png</iconset>
+                 <normaloff>../assets/icons/close-window.png</normaloff>../assets/icons/close-window.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -256,6 +256,25 @@
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout">
                <item>
+                <widget class="QLabel" name="recipe_pic_label">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>170</width>
+                   <height>170</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item>
                 <widget class="QFrame" name="frame_3">
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -282,7 +301,7 @@
                    <string notr="true">color: #6b7b8c;</string>
                   </property>
                   <property name="text">
-                   <string>Proceso</string>
+                   <string>Titulo</string>
                   </property>
                  </widget>
                  <widget class="QLabel" name="label">
@@ -290,7 +309,7 @@
                    <rect>
                     <x>20</x>
                     <y>40</y>
-                    <width>111</width>
+                    <width>71</width>
                     <height>16</height>
                    </rect>
                   </property>
@@ -300,20 +319,20 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>Nombre proceso:</string>
+                   <string>Categoria:</string>
                   </property>
                  </widget>
-                 <widget class="QLabel" name="nombre_label">
+                 <widget class="QLabel" name="recipe_category_label">
                   <property name="geometry">
                    <rect>
-                    <x>130</x>
+                    <x>100</x>
                     <y>40</y>
-                    <width>211</width>
-                    <height>20</height>
+                    <width>311</width>
+                    <height>16</height>
                    </rect>
                   </property>
                   <property name="text">
-                   <string>Proceso</string>
+                   <string>Categoria</string>
                   </property>
                  </widget>
                  <widget class="QLabel" name="label_2">
@@ -321,7 +340,7 @@
                    <rect>
                     <x>20</x>
                     <y>60</y>
-                    <width>111</width>
+                    <width>71</width>
                     <height>16</height>
                    </rect>
                   </property>
@@ -331,20 +350,20 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>Nombre operario:</string>
+                   <string>URL:</string>
                   </property>
                  </widget>
-                 <widget class="QLabel" name="operario_label">
+                 <widget class="QLabel" name="recipe_url_label">
                   <property name="geometry">
                    <rect>
-                    <x>130</x>
+                    <x>100</x>
                     <y>60</y>
-                    <width>191</width>
-                    <height>20</height>
+                    <width>311</width>
+                    <height>16</height>
                    </rect>
                   </property>
                   <property name="text">
-                   <string>Operario</string>
+                   <string>URL</string>
                   </property>
                  </widget>
                  <widget class="QLabel" name="label_3">
@@ -352,7 +371,7 @@
                    <rect>
                     <x>20</x>
                     <y>80</y>
-                    <width>101</width>
+                    <width>71</width>
                     <height>16</height>
                    </rect>
                   </property>
@@ -362,113 +381,20 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>Nombre pieza:</string>
+                   <string>Presupuesto</string>
                   </property>
                  </widget>
-                 <widget class="QLabel" name="pieza_label">
+                 <widget class="QLabel" name="recipe_budget_label">
                   <property name="geometry">
                    <rect>
-                    <x>130</x>
+                    <x>100</x>
                     <y>80</y>
-                    <width>201</width>
-                    <height>20</height>
+                    <width>311</width>
+                    <height>16</height>
                    </rect>
                   </property>
                   <property name="text">
-                   <string>Pieza</string>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="maquina_label">
-                  <property name="geometry">
-                   <rect>
-                    <x>520</x>
-                    <y>40</y>
-                    <width>171</width>
-                    <height>20</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>Numero de Maquina</string>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="label_4">
-                  <property name="geometry">
-                   <rect>
-                    <x>400</x>
-                    <y>40</y>
-                    <width>121</width>
-                    <height>20</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Numero de maquina:</string>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="label_5">
-                  <property name="geometry">
-                   <rect>
-                    <x>400</x>
-                    <y>60</y>
-                    <width>121</width>
-                    <height>20</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Hora de inicio</string>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="label_6">
-                  <property name="geometry">
-                   <rect>
-                    <x>400</x>
-                    <y>80</y>
-                    <width>121</width>
-                    <height>20</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Numero de piezas</string>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="hora_inicio_label">
-                  <property name="geometry">
-                   <rect>
-                    <x>520</x>
-                    <y>60</y>
-                    <width>171</width>
-                    <height>20</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>Hora de inicio</string>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="numero_piezas_label">
-                  <property name="geometry">
-                   <rect>
-                    <x>520</x>
-                    <y>80</y>
-                    <width>171</width>
-                    <height>20</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>Numero de piezas</string>
+                   <string>Presupuesto</string>
                   </property>
                  </widget>
                 </widget>
@@ -499,12 +425,35 @@
                     <string notr="true">color: #6b7b8c;</string>
                    </property>
                    <property name="text">
-                    <string>Observaciones</string>
+                    <string>Ingredientes</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPlainTextEdit" name="observaciones_text_edit"/>
+                  <widget class="QPlainTextEdit" name="ingredients_text_edit"/>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item>
+                  <widget class="QLabel" name="recipe_title_label_3">
+                   <property name="font">
+                    <font>
+                     <pointsize>14</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: #6b7b8c;</string>
+                   </property>
+                   <property name="text">
+                    <string>Proceso de realizacion</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPlainTextEdit" name="directions_text_edit"/>
                  </item>
                 </layout>
                </item>

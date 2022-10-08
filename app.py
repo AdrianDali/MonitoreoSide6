@@ -2,7 +2,7 @@ import sys
 
 from PySide6.QtWidgets import QApplication
 
-from controllers.main_window import MainWindowForm   
+from controllers.main_window import MainWindowForm
 
 
 if __name__ == '__main__':

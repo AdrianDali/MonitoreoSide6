@@ -1,14 +1,17 @@
-from interface.recipe_details_window import DetailWindow
+from views.recipe_details_window import DetailWindow
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QWidget, QTableWidgetItem, QAbstractItemView, QHBoxLayout, QFrame
 from PySide6.QtCore import Qt
-from interface.main_window import MainWindow
+
+from views.main_window import MainWindow
 from controllers.add_window import AddWindowForm
 from controllers.edit_window import EditWindowForm
 from controllers.recipe_details_window import DetailWindowForm
-from interface.general_custom_ui import GeneralCustomUi
-from database.proceso import DBProceso
-from interface import components
+from views.general_custom_ui import GeneralCustomUi
+from views import components
+
+from database import recipes
+
 import os
 
 class MainWindowForm(QWidget, MainWindow):
@@ -38,14 +41,14 @@ class MainWindowForm(QWidget, MainWindow):
     
     #configuracion de la tabla
     def config_table(self):
-        column_labels = ("ID", "NOMBRE USUARIO", "PROCESO","MAQUINA", "PIEZA", "HORA INICIO", "NUMERO PIEZAS", "PESO MERMA", "OBSERVACIONES", "OPCIONES")
-
+        column_labels = ("ID", "NOMBRE", "PIEZA", "MAQUINA", "NOMBRE","HORA INICIO", "NUMERO PIEZAS", "PESO MERMA", "OPCIONES")
+        
         self.recipes_table.setColumnCount(len(column_labels))
         self.recipes_table.setHorizontalHeaderLabels(column_labels)
         #cambiar de tamano a la celda 
         self.recipes_table.setColumnWidth(1, 200)
 
-        self.recipes_table.setColumnWidth(9, 120)
+        self.recipes_table.setColumnWidth(4, 120)
         #cambiar alto de la celda 
         self.recipes_table.verticalHeader().setDefaultSectionSize(150)
         #ocultar columna 
@@ -54,24 +57,29 @@ class MainWindowForm(QWidget, MainWindow):
 
         self.recipes_table.setSelectionBehavior(QAbstractItemView.SelectRows)
     
-
     def populate_table(self, data):
+
         self.recipes_table.setRowCount(len(data))
 
         for (index_row, row) in enumerate(data):
             for (index_cell, cell) in enumerate(row):
-                
-                self.recipes_table.setItem(
-                    index_row, index_cell, QTableWidgetItem(str(cell))
-                )
+                if index_cell == 1:
+                    self.recipes_table.setCellWidget(
+                        #cell contiene la direccion de la imagen 
+                        index_row, index_cell, components.RecipeImg(cell)
+                    )
+                else:
+                    self.recipes_table.setItem(
+                        index_row, index_cell, QTableWidgetItem(str(cell))
+                    )
             #agregar los botones a la tabla
             self.recipes_table.setCellWidget(
-                index_row, 9, self.build_action_buttons()
+                index_row, 8, self.build_action_buttons()
             )
 
-    #LE MANDAMOS LOS DATOS A LA TABLA QUE VIENEN DESDE LA BASE DE DATOS
+    
     def set_table_data(self):
-        data = DBProceso.select_procesos_unfinish(self)
+        data = recipes.select_all()
         self.populate_table(data)
     
     def restore_table_data(self):
@@ -82,9 +90,8 @@ class MainWindowForm(QWidget, MainWindow):
     def search(self):
         param = self.search_line_edit.text()
         if param != "":
-            pass
-            #data = recipes.select_by_parameter(param)
-            #self.populate_table(data)
+            data = recipes.select_by_parameter(param)
+            self.populate_table(data)
     
     def build_action_buttons(self):
         view_button = components.Button("view", "#17A2B8")
@@ -130,12 +137,12 @@ class MainWindowForm(QWidget, MainWindow):
         table = self.recipes_table
 
         if button:
-            #recipe_id = self.get_recipe_id_from_table(table, button)
-            #data = recipes.select_by_id(recipe_id)
-            pass
-            #if recipes.delete(recipe_id):
-            #    self.remove_img(data[5])
-            #    self.set_table_data()
+            recipe_id = self.get_recipe_id_from_table(table, button)
+            data = recipes.select_by_id(recipe_id)
+
+            if recipes.delete(recipe_id):
+                self.remove_img(data[5])
+                self.set_table_data()
     
     def remove_img(self, img_path):
         os.remove(img_path)
