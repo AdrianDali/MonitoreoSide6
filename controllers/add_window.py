@@ -1,12 +1,17 @@
+from string import printable
 from PySide6.QtWidgets import QWidget, QFileDialog
 from PySide6.QtCore import Qt
 
-from views.add_edit_window import AddEditWindow
-from views.general_custom_ui import GeneralCustomUi
+from interface.add_edit_window import AddEditWindow
+from interface.general_custom_ui import GeneralCustomUi
 
-from database import recipes
+from database.usuario import DBUsuario
+from database.proceso import DBProceso
+from database.pieza import DBPieza
+from database.maquina import DBMaquina
 
 import shutil
+import datetime 
 
 class AddWindowForm(QWidget, AddEditWindow):
 
@@ -20,28 +25,30 @@ class AddWindowForm(QWidget, AddEditWindow):
         self.setWindowFlag(Qt.Window)
 
         self.add_edit_button.setText("Agregar")
+        
         self.add_edit_button.clicked.connect(self.add_recipe)
-        self.select_img_button.clicked.connect(self.select_img)
+        #self.select_img_button.clicked.connect(self.select_img)
 
     def mousePressEvent(self, event):
         self.ui.mouse_press_event(event)
     
     def add_recipe(self):
-        title = self.title_line_edit.text()
-        category = self.category_combo_box.currentText()
-        url = self.url_line_edit.text()
-        budget = self.budget_line_edit.text()
-        img_path = self.img_path_to
-        ingredients = self.ingredients_text_edit.toPlainText()
-        directions = self.directions_text_edit.toPlainText()
+        proceso = self.nombre_line_edit.text()
+        operario = DBUsuario("select",self.operario_combo_box.currentText())
+        pieza = DBPieza("select" ,self.pieza_combo_box_2.currentText())
+        maquina = DBMaquina("select" ,self.maquina_combo_box_3.currentText())
+        hora_inicio = self.inicio_timeEdit.text()
+       
+        data = ( maquina._id_maquina,pieza._id_pieza, operario._id_usuario,proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),'')
+        print(data)
 
-        data = (title, category, url, budget, img_path, ingredients, directions)
 
-        if recipes.insert(data):
-            self.save_img()
-            print("Recipe Added")
-            self.clear_inputs()
-            self.parent.set_table_data()
+        proceso = DBProceso("new",maquina._id_maquina,pieza._id_pieza, operario._id_usuario,proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),'')
+
+            #self.save_img()
+            #print("Recipe Added")
+        self.clear_inputs()
+        self.parent.set_table_data()
 
     def select_img(self):
         #retorna una lista con los datos
@@ -59,12 +66,10 @@ class AddWindowForm(QWidget, AddEditWindow):
     
     #limpiar las entradas de datos
     def clear_inputs(self):
-        self.title_line_edit.clear()
-        self.category_combo_box.clear()
+        self.nombre_line_edit.clear()
+        self.operario_combo_box.clear()
         self.ui.fill_category_cb()
-        self.url_line_edit.clear()
-        self.budget_line_edit.clear()
-        self.image_path_line_edit.clear()
-        self.ingredients_text_edit.clear()
-        self.directions_text_edit.clear()
+        self.pieza_combo_box_2.clear()
+        self.maquina_combo_box_3.clear()
+        self.observaciones_text_edit.clear()
    
