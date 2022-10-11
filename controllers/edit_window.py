@@ -17,7 +17,7 @@ class EditWindowForm(QWidget, AddEditWindow):
     def __init__(self, parent=None, recipe_id=None):
         self.recipe_id = recipe_id
         self.parent = parent
-
+        print(self.recipe_id)
         super().__init__(parent)
         self.setupUi(self)
         self.ui = GeneralCustomUi(self)
@@ -37,10 +37,12 @@ class EditWindowForm(QWidget, AddEditWindow):
         operario = DBUsuario("select",self.operario_combo_box.currentText())
         pieza = DBPieza("select" ,self.pieza_combo_box_2.currentText())
         maquina = DBMaquina("select" ,self.maquina_combo_box_3.currentText())
-        hora_inicio = self.inicio_timeEdit.text()
         data = ( maquina._id_maquina,pieza._id_pieza, operario._id_usuario,proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),'')
+        print("data")
         print(data)
-        proceso = DBProceso(maquina._id_maquina,pieza._id_pieza, operario._id_usuario,proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),'')
+
+        proc = DBProceso( mode = "update" , id_proceso= self.recipe_id ,id_maquina =  maquina._id_maquina,  id_pieza = pieza._id_pieza, id_nombre =  operario._id_usuario, nombre =  proceso, observaciones = ' ')
+       
         self.parent.set_table_data()
 
 
@@ -50,39 +52,18 @@ class EditWindowForm(QWidget, AddEditWindow):
     
     def fill_inputs(self):
         #data = recipes.select_by_id(self.recipe_id)
-
-        #self.title_line_edit.setText(data[1])
-        #self.set_current_text_cb(data[2])
-        #self.url_line_edit.setText(data[3])
-        #self.budget_line_edit.setText(str(data[4]))
-
-        #img_name = data[5].split("\\")[-1]
-
-        #self.old_image = img_name
-        #self.new_img = img_name
-
-        #self.image_path_line_edit.setText(img_name)
-        #self.ingredients_text_edit.setPlainText(data[6])
-        #self.directions_text_edit.setPlainText(data[7])
-        pass
-    def select_img(self):
-        self.img_path_from = QFileDialog.getOpenFileName()[0]
-
-        if self.img_path_from:
-            self.new_img = self.img_path_from.split("/")[-1]
-            self.image_path_line_edit.setText(self.new_img)
-    
-    def replace_img(self):
-        if self.old_image != self.new_img:
-            os.remove("recipe_images\\" + self.old_image)
-            shutil.copy(self.img_path_from, "recipe_images")
-    
+        proceso = DBProceso("select", id_proceso = self.recipe_id)
+        print("idproceos")
+        print(proceso.id_nombre)
+        self.nombre_line_edit.setText(proceso.nombre)
+        usuario = DBUsuario("select", id_usuario=  proceso.id_nombre)
+        pieza = DBPieza("select", id_pieza=  proceso.id_pieza)
+        maquina = DBMaquina("select", id_maquina=  proceso.id_maquina)
+        self.operario_combo_box.setCurrentText(usuario.nombre)
+        self.pieza_combo_box_2.setCurrentText(pieza.nombre)
+        self.maquina_combo_box_3.setCurrentText(maquina.nombre)
+       
+        
     def clear_inputs(self):
-        self.title_line_edit.clear()
-        self.category_combo_box.clear()
         self.ui.fill_category_cb()
-        self.url_line_edit.clear()
-        self.budget_line_edit.clear()
-        self.image_path_line_edit.clear()
-        self.ingredients_text_edit.clear()
-        self.directions_text_edit.clear()
+

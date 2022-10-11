@@ -24,7 +24,7 @@ class MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1014, 462)
+        MainWindow.resize(1296, 491)
         MainWindow.setStyleSheet(u"border-radius: 5px;")
         self.verticalLayout = QVBoxLayout(MainWindow)
         self.verticalLayout.setSpacing(0)
@@ -101,7 +101,7 @@ class MainWindow(object):
         self.maximize_button.setIconSize(QSize(25, 25))
         self.close_button = QToolButton(self.buttons_holder_frame)
         self.close_button.setObjectName(u"close_button")
-        self.close_button.setGeometry(QRect(90, 0, 22, 22))
+        self.close_button.setGeometry(QRect(90, 0, 21, 22))
         icon3 = QIcon()
         icon3.addFile(u"./assets/icons/close-window.png", QSize(), QIcon.Normal, QIcon.Off)
         self.close_button.setIcon(icon3)

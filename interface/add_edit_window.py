@@ -17,8 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QHBoxLayout,
     QLabel, QLineEdit, QPlainTextEdit, QPushButton,
-    QSizePolicy, QTimeEdit, QToolButton, QVBoxLayout,
-    QWidget)
+    QSizePolicy, QToolButton, QVBoxLayout, QWidget)
 
 class AddEditWindow(object):
     def setupUi(self, AddEditWindow):
@@ -132,9 +131,6 @@ class AddEditWindow(object):
         self.label_4 = QLabel(self.content_frame)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setGeometry(QRect(10, 210, 121, 16))
-        self.label_5 = QLabel(self.content_frame)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(10, 270, 131, 16))
         self.add_edit_button = QPushButton(self.content_frame)
         self.add_edit_button.setObjectName(u"add_edit_button")
         self.add_edit_button.setGeometry(QRect(730, 170, 201, 30))
@@ -179,11 +175,6 @@ class AddEditWindow(object):
         self.maquina_combo_box_3.setGeometry(QRect(10, 230, 291, 31))
         self.maquina_combo_box_3.setStyleSheet(u"background-color: white;\n"
 "border: 1px solid #ff6e40;")
-        self.inicio_timeEdit = QTimeEdit(self.content_frame)
-        self.inicio_timeEdit.setObjectName(u"inicio_timeEdit")
-        self.inicio_timeEdit.setGeometry(QRect(10, 290, 291, 31))
-        self.inicio_timeEdit.setStyleSheet(u"background-color: white;\n"
-"border: 1px solid #ff6e40;")
 
         self.verticalLayout_2.addWidget(self.content_frame)
 
@@ -211,7 +202,6 @@ class AddEditWindow(object):
         self.operario_combo_box.setPlaceholderText(QCoreApplication.translate("AddEditWindow", u"Selecciones un Operario", None))
         self.label_3.setText(QCoreApplication.translate("AddEditWindow", u"Nombre de Pieza", None))
         self.label_4.setText(QCoreApplication.translate("AddEditWindow", u"Numero de Maquina", None))
-        self.label_5.setText(QCoreApplication.translate("AddEditWindow", u"Hora de Inicio", None))
         self.add_edit_button.setText(QCoreApplication.translate("AddEditWindow", u"Crear", None))
         self.cancel_button.setText(QCoreApplication.translate("AddEditWindow", u"Cancelar", None))
         self.label_6.setText(QCoreApplication.translate("AddEditWindow", u"Observaciones", None))

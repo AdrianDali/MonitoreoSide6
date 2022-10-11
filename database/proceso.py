@@ -40,7 +40,9 @@ class DBProceso():
     def hora_inicio(self):
         return self._hora_inicio
 
-    def __init__(self, mode = '', id_maquina= 0 , id_pieza = 0 , id_nombre = 0 , nombre = "",hora_inicio = '', observaciones = '', proceso_terminado = 0, numero_piezas = 0, peso_merma = 0,id_proceso = 0):
+    def __init__(self, mode = '', id_maquina= 0 , id_pieza = 0 , id_nombre = 0 ,
+     nombre = "",hora_inicio = '', observaciones = '', proceso_terminado = 0,
+      numero_piezas = 0, peso_merma = 0,id_proceso = 0):
         self._id_proceso = id_proceso
         self._id_maquina = id_maquina 
         self._id_pieza = id_pieza
@@ -68,6 +70,8 @@ class DBProceso():
         elif self._id_proceso != '' and mode == 'select':
             #print("select id proceso  ")
             self.select_proceso()  
+        elif self._nombre != '' and mode == 'update':
+            self.update_proceso()
         else:
             print("Objeto proceso vacio")
             
@@ -133,6 +137,39 @@ class DBProceso():
             raise 
 
 
+    def update_proceso(self):
+        sql = "UPDATE proceso SET id_maquina = {}, id_pieza = {}, id_nombre = {}, nombre = '{}' WHERE id_proceso = {}".format(self._id_maquina, self._id_pieza, self._id_nombre, self._nombre, self._id_proceso)
+        print("idprceosd  ")
+        print(self._id_proceso)
+        try:
+            connection = create_connection() 
+            cursor = connection.cursor() 
+            cursor.execute(sql)
+            connection.commit()
+            print("logrado")
+            cursor.close()
+        except Exception as e: 
+            raise 
+
+
+    def finish_proceso(self):
+        sql = "UPDATE proceso SET hora_termino = '2022-07-14 23:35:10' , proceso_terminado = 1 WHERE id_proceso = 1;".format(self._id_maquina,
+         self._id_pieza, self._id_nombre, self._nombre, self._id_proceso)
+        print("idprceosd  ")
+        print(self._id_proceso)
+        try:
+            connection = create_connection() 
+            cursor = connection.cursor() 
+            cursor.execute(sql)
+            connection.commit()
+            print("logrado")
+            cursor.close()
+        except Exception as e: 
+            raise 
+
+
+
+
     def actualizar_peso_proceso(contador, idProceso):
         sql = "update proceso set peso_merma = {} where id_proceso = {}".format(contador, idProceso)
         try:
@@ -163,25 +200,30 @@ class DBProceso():
             raise
 
     def select_proceso(self):
-        sql = 'SELECT * from proceso where id_proceso = "{}" '.format(self._id_proceso)
+        sql = 'SELECT * from proceso where id_proceso = {} '.format(self._id_proceso)
         objeto_usuario = []
         try: 
             connection = create_connection()
             cursor = connection.cursor()
             cursor.execute(sql)
-            self.nombre_proceso = cursor.fetchall()
+            self.nombre_proceso = []
+            self.nombre_proceso =cursor.fetchall()
+            
             user = self.nombre_proceso
-
-            print(user[0][4])
-            self._nombre = user[0][4]
-            self._id_proceso = user[0][0] 
-            self._id_maquina = user[0][1]
-            self._id_pieza = user[0][2]
-            self._id_nombre = user[0][3]
-            self._hora_inicio = user[0][5]
-            print(self.hora_inicio)
-            cursor.close()
-            return user
+            if(user == []): 
+                print("no existe nada en la DB")
+                
+            else:
+                self._nombre = user[0][4]
+                self._id_proceso = user[0][0] 
+                self._id_maquina = user[0][1]
+                self._id_pieza = user[0][2]
+                self._id_nombre = user[0][3]
+                self._hora_inicio = user[0][5]
+                #print(self.hora_inicio)
+                print(user)
+                cursor.close()
+                return user
         except Exception as e:
             print(e)
             raise

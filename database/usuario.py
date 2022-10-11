@@ -24,6 +24,7 @@ class DBUsuario():
                 raise
         elif self._nombre != '' and mode == 'select':
             self.select_id_usuario()  
+
         elif self._id_usuario != 0 and mode == 'select':
             
             #print("select usuarioggggg")
@@ -44,7 +45,8 @@ class DBUsuario():
             usuario = cur.fetchone()
             #print(usuario)
             objeto_usuario = [usuario[0],usuario[1],usuario[2]]
-            #print(objeto_usuario)
+            print("objeto usuario",objeto_usuario)
+           
             self._nombre = usuario[1]
             #print("self nombre")
             #print(self._nombre)

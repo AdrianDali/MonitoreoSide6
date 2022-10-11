@@ -116,7 +116,7 @@
                <string notr="true">color: white;</string>
               </property>
               <property name="text">
-               <string>Recipes Organizer</string>
+               <string>Crear Proceso</string>
               </property>
              </widget>
             </item>
@@ -154,7 +154,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../assets/icons/minimize-window.png</normaloff>../assets/icons/minimize-window.png</iconset>
+                 <normaloff>../../pys6-recipes-organizer/assets/icons/minimize-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/minimize-window.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -177,7 +177,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../assets/icons/restore-window.png</normaloff>../assets/icons/restore-window.png</iconset>
+                 <normaloff>../../pys6-recipes-organizer/assets/icons/restore-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/restore-window.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -200,7 +200,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../assets/icons/maximize-window.png</normaloff>../assets/icons/maximize-window.png</iconset>
+                 <normaloff>../../pys6-recipes-organizer/assets/icons/maximize-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/maximize-window.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -223,7 +223,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../assets/icons/close-window.png</normaloff>../assets/icons/close-window.png</iconset>
+                 <normaloff>../../pys6-recipes-organizer/assets/icons/close-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/close-window.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -249,20 +249,20 @@
             <property name="geometry">
              <rect>
               <x>10</x>
-              <y>0</y>
-              <width>49</width>
+              <y>30</y>
+              <width>111</width>
               <height>16</height>
              </rect>
             </property>
             <property name="text">
-             <string>Titulo</string>
+             <string>Nombre Proceso</string>
             </property>
            </widget>
-           <widget class="QLineEdit" name="title_line_edit">
+           <widget class="QLineEdit" name="nombre_line_edit">
             <property name="geometry">
              <rect>
               <x>10</x>
-              <y>20</y>
+              <y>50</y>
               <width>291</width>
               <height>30</height>
              </rect>
@@ -276,20 +276,20 @@ border: 1px solid #ff6e40;</string>
             <property name="geometry">
              <rect>
               <x>10</x>
-              <y>60</y>
-              <width>61</width>
+              <y>90</y>
+              <width>101</width>
               <height>16</height>
              </rect>
             </property>
             <property name="text">
-             <string>Categoria</string>
+             <string>Nombre Operario</string>
             </property>
            </widget>
-           <widget class="QComboBox" name="category_combo_box">
+           <widget class="QComboBox" name="operario_combo_box">
             <property name="geometry">
              <rect>
               <x>10</x>
-              <y>80</y>
+              <y>110</y>
               <width>291</width>
               <height>31</height>
              </rect>
@@ -299,121 +299,40 @@ border: 1px solid #ff6e40;</string>
 border: 1px solid #ff6e40;</string>
             </property>
             <property name="placeholderText">
-             <string>Selecciones una Categoria</string>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="url_line_edit">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>140</y>
-              <width>291</width>
-              <height>30</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: white;
-border: 1px solid #ff6e40;</string>
+             <string>Selecciones un Operario</string>
             </property>
            </widget>
            <widget class="QLabel" name="label_3">
             <property name="geometry">
              <rect>
               <x>10</x>
-              <y>120</y>
+              <y>150</y>
               <width>101</width>
               <height>16</height>
              </rect>
             </property>
             <property name="text">
-             <string>URL de una Guia</string>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="budget_line_edit">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>200</y>
-              <width>291</width>
-              <height>30</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: white;
-border: 1px solid #ff6e40;</string>
+             <string>Nombre de Pieza</string>
             </property>
            </widget>
            <widget class="QLabel" name="label_4">
             <property name="geometry">
              <rect>
               <x>10</x>
-              <y>180</y>
-              <width>81</width>
+              <y>210</y>
+              <width>121</width>
               <height>16</height>
              </rect>
             </property>
             <property name="text">
-             <string>presupuesto</string>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="image_path_line_edit">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>260</y>
-              <width>221</width>
-              <height>30</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: white;
-border: 1px solid #ff6e40;</string>
-            </property>
-           </widget>
-           <widget class="QLabel" name="label_5">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>240</y>
-              <width>131</width>
-              <height>16</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>Seleccione una imagen</string>
-            </property>
-           </widget>
-           <widget class="QToolButton" name="select_img_button">
-            <property name="geometry">
-             <rect>
-              <x>240</x>
-              <y>260</y>
-              <width>31</width>
-              <height>31</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QToolButton::hover {background-color : #ff6e40}</string>
-            </property>
-            <property name="text">
-             <string>...</string>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../assets/icons/open-file.png</normaloff>../assets/icons/open-file.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>50</width>
-              <height>50</height>
-             </size>
+             <string>Numero de Maquina</string>
             </property>
            </widget>
            <widget class="QPushButton" name="add_edit_button">
             <property name="geometry">
              <rect>
-              <x>50</x>
-              <y>320</y>
+              <x>730</x>
+              <y>170</y>
               <width>201</width>
               <height>30</height>
              </rect>
@@ -432,11 +351,11 @@ color: white;
 QPushButton::hover {background-color : #ffc13b};</string>
             </property>
             <property name="text">
-             <string>text</string>
+             <string>Crear</string>
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../assets/icons/plus.png</normaloff>../assets/icons/plus.png</iconset>
+              <normaloff>../../pys6-recipes-organizer/assets/icons/plus.png</normaloff>../../pys6-recipes-organizer/assets/icons/plus.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -448,8 +367,8 @@ QPushButton::hover {background-color : #ffc13b};</string>
            <widget class="QPushButton" name="cancel_button">
             <property name="geometry">
              <rect>
-              <x>50</x>
-              <y>360</y>
+              <x>730</x>
+              <y>210</y>
               <width>201</width>
               <height>30</height>
              </rect>
@@ -472,7 +391,7 @@ QPushButton::hover {background-color : #ffc13b};</string>
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../assets/icons/cancel.png</normaloff>../assets/icons/cancel.png</iconset>
+              <normaloff>../../pys6-recipes-organizer/assets/icons/cancel.png</normaloff>../../pys6-recipes-organizer/assets/icons/cancel.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -484,20 +403,20 @@ QPushButton::hover {background-color : #ffc13b};</string>
            <widget class="QLabel" name="label_6">
             <property name="geometry">
              <rect>
-              <x>320</x>
+              <x>330</x>
               <y>10</y>
               <width>111</width>
               <height>16</height>
              </rect>
             </property>
             <property name="text">
-             <string>Ingredientes</string>
+             <string>Observaciones</string>
             </property>
            </widget>
-           <widget class="QPlainTextEdit" name="ingredients_text_edit">
+           <widget class="QPlainTextEdit" name="observaciones_text_edit">
             <property name="geometry">
              <rect>
-              <x>320</x>
+              <x>330</x>
               <y>30</y>
               <width>311</width>
               <height>371</height>
@@ -508,31 +427,38 @@ QPushButton::hover {background-color : #ffc13b};</string>
 border: 1px solid #ff6e40;</string>
             </property>
            </widget>
-           <widget class="QLabel" name="label_7">
+           <widget class="QComboBox" name="pieza_combo_box_2">
             <property name="geometry">
              <rect>
-              <x>640</x>
-              <y>10</y>
-              <width>111</width>
-              <height>16</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>Pasos de realizacion</string>
-            </property>
-           </widget>
-           <widget class="QPlainTextEdit" name="directions_text_edit">
-            <property name="geometry">
-             <rect>
-              <x>640</x>
-              <y>30</y>
-              <width>311</width>
-              <height>371</height>
+              <x>10</x>
+              <y>170</y>
+              <width>291</width>
+              <height>31</height>
              </rect>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
+             <string notr="true">background-color: white;
 border: 1px solid #ff6e40;</string>
+            </property>
+            <property name="placeholderText">
+             <string>Selecciones una Pieza</string>
+            </property>
+           </widget>
+           <widget class="QComboBox" name="maquina_combo_box_3">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>230</y>
+              <width>291</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: white;
+border: 1px solid #ff6e40;</string>
+            </property>
+            <property name="placeholderText">
+             <string>Selecciones una Maquina</string>
             </property>
            </widget>
           </widget>

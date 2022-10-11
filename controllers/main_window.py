@@ -132,7 +132,8 @@ class MainWindowForm(QWidget, MainWindow):
         if button:
             #recipe_id = self.get_recipe_id_from_table(table, button)
             #data = recipes.select_by_id(recipe_id)
-            pass
+            print("boton presionado")
+            
             #if recipes.delete(recipe_id):
             #    self.remove_img(data[5])
             #    self.set_table_data()

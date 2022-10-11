@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1014</width>
-    <height>462</height>
+    <width>1296</width>
+    <height>491</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -128,7 +128,7 @@
                   <string notr="true">color: white;</string>
                  </property>
                  <property name="text">
-                  <string>Recipes Organizer</string>
+                  <string>Monitoreo de Procesos</string>
                  </property>
                 </widget>
                </item>
@@ -166,7 +166,7 @@
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>../assets/icons/minimize-window.png</normaloff>../assets/icons/minimize-window.png</iconset>
+                    <normaloff>../../pys6-recipes-organizer/assets/icons/minimize-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/minimize-window.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -189,7 +189,7 @@
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>../assets/icons/restore-window.png</normaloff>../assets/icons/restore-window.png</iconset>
+                    <normaloff>../../pys6-recipes-organizer/assets/icons/restore-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/restore-window.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -212,7 +212,7 @@
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>../assets/icons/maximize-window.png</normaloff>../assets/icons/maximize-window.png</iconset>
+                    <normaloff>../../pys6-recipes-organizer/assets/icons/maximize-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/maximize-window.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -226,7 +226,7 @@
                    <rect>
                     <x>90</x>
                     <y>0</y>
-                    <width>22</width>
+                    <width>21</width>
                     <height>22</height>
                    </rect>
                   </property>
@@ -235,7 +235,7 @@
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>../assets/icons/close-window.png</normaloff>../assets/icons/close-window.png</iconset>
+                    <normaloff>../../pys6-recipes-organizer/assets/icons/close-window.png</normaloff>../../pys6-recipes-organizer/assets/icons/close-window.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -286,11 +286,11 @@
 QPushButton::hover {background-color : #ffc13b};</string>
                  </property>
                  <property name="text">
-                  <string>Nueva Receta</string>
+                  <string>Nuevo Proceso</string>
                  </property>
                  <property name="icon">
                   <iconset>
-                   <normaloff>../assets/icons/plus.png</normaloff>../assets/icons/plus.png</iconset>
+                   <normaloff>../../pys6-recipes-organizer/assets/icons/plus.png</normaloff>../../pys6-recipes-organizer/assets/icons/plus.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -340,7 +340,7 @@ border-radius: 0px;</string>
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap>../assets/icons/search.png</pixmap>
+                    <pixmap>../../pys6-recipes-organizer/assets/icons/search.png</pixmap>
                    </property>
                   </widget>
                  </item>
