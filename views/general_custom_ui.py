@@ -1,10 +1,10 @@
 #remover marcos de las ventanas
 
 
-from PySide6.QtCore import Qt
+from PyQt5.QtCore import Qt
 
 
-from PySide6.QtWidgets import QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 
 category_data = (
     "Recetas Italianas",

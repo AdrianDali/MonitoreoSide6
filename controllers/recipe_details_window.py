@@ -1,6 +1,6 @@
-from PySide6.QtWidgets import QWidget
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QPixmap
+from PyQt5.QtWidgets import QWidget
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPixmap
 from database.maquina import DBMaquina
 
 from interface.recipe_details_window import DetailWindow

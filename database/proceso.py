@@ -72,6 +72,8 @@ class DBProceso():
             self.select_proceso()  
         elif self._nombre != '' and mode == 'update':
             self.update_proceso()
+        elif self._id_proceso != "" and mode == "finish":
+            self.finish_proceso()        
         else:
             print("Objeto proceso vacio")
             
@@ -108,11 +110,11 @@ class DBProceso():
                 raise
 
 
-    def insertar_monitoreo_proceso(idProceso,idUsuario):
+    def insertar_monitoreo_proceso(self):
         fecha= datetime.datetime.now()
-        print(idProceso)
+        print(self._id_proceso)
         print(str(fecha.strftime("%Y-%m-%d %H:%M:%S")))
-        sql = "insert into proceso_usuario(id_proceso, id_usuario,hora) values({},{},'{}')".format(idProceso,idUsuario, str(fecha.strftime("%H:%M:%S")))
+        sql = "insert into proceso_usuario(id_proceso, id_usuario,hora) values({},{},'{}')".format(self._id_proceso, self.id_nombre, str(fecha.strftime("%H:%M:%S")))
         try:
             connection = create_connection() 
             cursor = connection.cursor() 
@@ -124,8 +126,23 @@ class DBProceso():
             raise 
 
 
-    def actualizar_piezas_proceso(contador, idProceso):
-        sql = "update proceso set numero_piezas = {} where id_proceso = {}".format(contador, idProceso)
+    def actualizar_piezas_proceso(self, contador):
+        sql = "update proceso set numero_piezas = {} where id_proceso = {}".format(contador, self._id_proceso)
+        try:
+            connection = create_connection() 
+            cursor = connection.cursor() 
+            cursor.execute(sql)
+            connection.commit()
+            print("logrado")
+            cursor.close()
+        except Exception as e: 
+            raise 
+
+    
+    def actualizar_peso_proceso(self, contador):
+        print("EL peso que se metera")
+        print(contador)
+        sql = "update proceso set peso_merma = {} where id_proceso = {}".format(contador, self._id_proceso)
         try:
             connection = create_connection() 
             cursor = connection.cursor() 
@@ -153,8 +170,13 @@ class DBProceso():
 
 
     def finish_proceso(self):
-        sql = "UPDATE proceso SET hora_termino = '2022-07-14 23:35:10' , proceso_terminado = 1 WHERE id_proceso = 1;".format(self._id_maquina,
-         self._id_pieza, self._id_nombre, self._nombre, self._id_proceso)
+
+        fecha= datetime.datetime.now()
+        print(self._id_proceso)
+        print(str(fecha.strftime("%Y-%m-%d %H:%M:%S")))
+
+
+        sql = "UPDATE proceso SET hora_termino = '{}' , proceso_terminado = 0 WHERE id_proceso = {};".format(str(fecha.strftime("%Y-%m-%d %H:%M:%S")),self._id_proceso)
         print("idprceosd  ")
         print(self._id_proceso)
         try:
@@ -170,33 +192,27 @@ class DBProceso():
 
 
 
-    def actualizar_peso_proceso(contador, idProceso):
-        sql = "update proceso set peso_merma = {} where id_proceso = {}".format(contador, idProceso)
-        try:
-            connection = create_connection() 
-            cursor = connection.cursor() 
-            cursor.execute(sql)
-            connection.commit()
-            print("logrado")
-            cursor.close()
-        except Exception as e: 
-            raise 
+    
 
 
     def select_id_proceso(self):
-        sql = 'SELECT * from proceso where nombre = "{}" '.format(self.nombre_proceso)
+        sql = 'SELECT id_proceso from proceso where nombre = "{}" '.format(self._nombre)
         objeto_usuario = []
+        print(self._nombre)
         try: 
             connection = create_connection()
             cursor = connection.cursor()
             cursor.execute(sql)
-            self.nombre_proceso = cursor.fetchall()
-            user = self.nombre_proceso
-            print(user)
+            datoss = cursor.fetchone()
+            self._id_proceso = datoss[0]
+            user = self._nombre
+            print("aasfsgdfg")
+            print(self._id_proceso)
             cursor.close()
             return user
         except Exception as e:
             print(e)
+            print("Errror al seleccionar proceso")
             raise
 
     def select_proceso(self):

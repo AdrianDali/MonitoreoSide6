@@ -8,14 +8,14 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+from PyQt5.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
+from PyQt5.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
     QPlainTextEdit, QSizePolicy, QToolButton, QVBoxLayout,
     QWidget)
 
@@ -73,28 +73,28 @@ class DetailWindow(object):
         self.minimize_button.setObjectName(u"minimize_button")
         self.minimize_button.setGeometry(QRect(10, 0, 22, 22))
         icon = QIcon()
-        icon.addFile(u"../../pys6-recipes-organizer/assets/icons/minimize-window.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"./assets/icons/minimize-window.png", QSize(), QIcon.Normal, QIcon.Off)
         self.minimize_button.setIcon(icon)
         self.minimize_button.setIconSize(QSize(25, 25))
         self.restore_button = QToolButton(self.buttons_holder_frame)
         self.restore_button.setObjectName(u"restore_button")
         self.restore_button.setGeometry(QRect(50, 0, 22, 22))
         icon1 = QIcon()
-        icon1.addFile(u"../../pys6-recipes-organizer/assets/icons/restore-window.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u"./assets/icons/restore-window.png", QSize(), QIcon.Normal, QIcon.Off)
         self.restore_button.setIcon(icon1)
         self.restore_button.setIconSize(QSize(25, 25))
         self.maximize_button = QToolButton(self.buttons_holder_frame)
         self.maximize_button.setObjectName(u"maximize_button")
         self.maximize_button.setGeometry(QRect(50, 0, 22, 22))
         icon2 = QIcon()
-        icon2.addFile(u"../../pys6-recipes-organizer/assets/icons/maximize-window.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u"./assets/icons/maximize-window.png", QSize(), QIcon.Normal, QIcon.Off)
         self.maximize_button.setIcon(icon2)
         self.maximize_button.setIconSize(QSize(25, 25))
         self.close_button = QToolButton(self.buttons_holder_frame)
         self.close_button.setObjectName(u"close_button")
         self.close_button.setGeometry(QRect(90, 0, 22, 22))
         icon3 = QIcon()
-        icon3.addFile(u"../../pys6-recipes-organizer/assets/icons/close-window.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u"./assets/icons/close-window.png", QSize(), QIcon.Normal, QIcon.Off)
         self.close_button.setIcon(icon3)
         self.close_button.setIconSize(QSize(25, 25))
 

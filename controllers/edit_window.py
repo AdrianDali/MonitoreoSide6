@@ -1,5 +1,5 @@
-from PySide6.QtWidgets import QWidget, QFileDialog
-from PySide6.QtCore import Qt
+from PyQt5.QtWidgets import QWidget, QFileDialog
+from PyQt5.QtCore import Qt
 
 from interface.add_edit_window import AddEditWindow
 from interface.general_custom_ui import GeneralCustomUi

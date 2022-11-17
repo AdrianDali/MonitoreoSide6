@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -- coding: utf-8 --
 
 ################################################################################
 ## Form generated from reading UI file 'main_window.ui'
@@ -8,17 +8,17 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+from PyQt5.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QHeaderView,
-    QLabel, QLineEdit, QPushButton, QSizePolicy,
-    QSpacerItem, QTableWidget, QTableWidgetItem, QToolButton,
-    QVBoxLayout, QWidget)
+from PyQt5.QtWidgets import (QApplication, QFrame, QHBoxLayout, QHeaderView,
+    QLabel, QPushButton, QSizePolicy, QSpacerItem,
+    QTableWidget, QTableWidgetItem, QToolButton, QVBoxLayout,
+    QWidget)
 
 class MainWindow(object):
     def setupUi(self, MainWindow):
@@ -82,28 +82,28 @@ class MainWindow(object):
         self.minimize_button.setObjectName(u"minimize_button")
         self.minimize_button.setGeometry(QRect(10, 0, 22, 22))
         icon = QIcon()
-        icon.addFile(u"./assets/icons/minimize-window.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"../../pys6-recipes-organizer/assets/icons/minimize-window.png", QSize(), QIcon.Normal, QIcon.Off)
         self.minimize_button.setIcon(icon)
         self.minimize_button.setIconSize(QSize(25, 25))
         self.restore_button = QToolButton(self.buttons_holder_frame)
         self.restore_button.setObjectName(u"restore_button")
         self.restore_button.setGeometry(QRect(50, 0, 22, 22))
         icon1 = QIcon()
-        icon1.addFile(u"./assets/icons/restore-window.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u"../../pys6-recipes-organizer/assets/icons/restore-window.png", QSize(), QIcon.Normal, QIcon.Off)
         self.restore_button.setIcon(icon1)
         self.restore_button.setIconSize(QSize(25, 25))
         self.maximize_button = QToolButton(self.buttons_holder_frame)
         self.maximize_button.setObjectName(u"maximize_button")
         self.maximize_button.setGeometry(QRect(50, 0, 22, 22))
         icon2 = QIcon()
-        icon2.addFile(u"./assets/icons/maximize-window.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u"../../pys6-recipes-organizer/assets/icons/maximize-window.png", QSize(), QIcon.Normal, QIcon.Off)
         self.maximize_button.setIcon(icon2)
         self.maximize_button.setIconSize(QSize(25, 25))
         self.close_button = QToolButton(self.buttons_holder_frame)
         self.close_button.setObjectName(u"close_button")
         self.close_button.setGeometry(QRect(90, 0, 21, 22))
         icon3 = QIcon()
-        icon3.addFile(u"./assets/icons/close-window.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u"../../pys6-recipes-organizer/assets/icons/close-window.png", QSize(), QIcon.Normal, QIcon.Off)
         self.close_button.setIcon(icon3)
         self.close_button.setIconSize(QSize(25, 25))
 
@@ -129,41 +129,78 @@ class MainWindow(object):
 "}\n"
 "QPushButton::hover {background-color : #ffc13b};")
         icon4 = QIcon()
-        icon4.addFile(u"./assets/icons/plus.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u"../../pys6-recipes-organizer/assets/icons/plus.png", QSize(), QIcon.Normal, QIcon.Off)
         self.new_recipe_button.setIcon(icon4)
         self.new_recipe_button.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_2.addWidget(self.new_recipe_button)
 
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
+
+        self.view_button = QPushButton(self.action_bar_frame)
+        self.view_button.setObjectName(u"view_button")
+        self.view_button.setMinimumSize(QSize(150, 30))
+        self.view_button.setFont(font)
+        self.view_button.setStyleSheet(u"QPushButton{\n"
+"	background-color : #17A2B8;\n"
+"	color: white;\n"
+"}\n"
+"QPushButton::hover {background-color : #ffc13b};")
+        icon5 = QIcon()
+        icon5.addFile(u"../../pys6-recipes-organizer/assets/icons/view.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.view_button.setIcon(icon5)
+        self.view_button.setIconSize(QSize(20, 20))
+
+        self.horizontalLayout_2.addWidget(self.view_button)
+
+        self.edit_button = QPushButton(self.action_bar_frame)
+        self.edit_button.setObjectName(u"edit_button")
+        self.edit_button.setMinimumSize(QSize(150, 30))
+        self.edit_button.setFont(font)
+        self.edit_button.setStyleSheet(u"QPushButton{\n"
+"	background-color : #007BFF;\n"
+"	color: white;\n"
+"}\n"
+"QPushButton::hover {background-color : #ffc13b};")
+        icon6 = QIcon()
+        icon6.addFile(u"../../pys6-recipes-organizer/assets/icons/edit.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.edit_button.setIcon(icon6)
+        self.edit_button.setIconSize(QSize(20, 20))
+
+        self.horizontalLayout_2.addWidget(self.edit_button)
+
+        self.finish_button = QPushButton(self.action_bar_frame)
+        self.finish_button.setObjectName(u"finish_button")
+        self.finish_button.setMinimumSize(QSize(150, 30))
+        self.finish_button.setFont(font)
+        self.finish_button.setStyleSheet(u"QPushButton{\n"
+"	background-color : #DC3545;\n"
+"	color: white;\n"
+"}\n"
+"QPushButton::hover {background-color : #ffc13b};")
+        self.finish_button.setIconSize(QSize(20, 20))
+
+        self.horizontalLayout_2.addWidget(self.finish_button)
+
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer)
 
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.label = QLabel(self.action_bar_frame)
-        self.label.setObjectName(u"label")
-        self.label.setMinimumSize(QSize(30, 30))
-        self.label.setMaximumSize(QSize(30, 16777215))
-        self.label.setStyleSheet(u"background-color: white;\n"
-"border-radius: 0px;")
-        self.label.setPixmap(QPixmap(u"./assets/icons/search.png"))
+        self.new_recipe_button_2 = QPushButton(self.action_bar_frame)
+        self.new_recipe_button_2.setObjectName(u"new_recipe_button_2")
+        self.new_recipe_button_2.setMinimumSize(QSize(150, 30))
+        self.new_recipe_button_2.setFont(font)
+        self.new_recipe_button_2.setStyleSheet(u"QPushButton{\n"
+"	background-color : #ff6e40;\n"
+"	color: white;\n"
+"}\n"
+"QPushButton::hover {background-color : #ffc13b};")
+        self.new_recipe_button_2.setIcon(icon4)
+        self.new_recipe_button_2.setIconSize(QSize(20, 20))
 
-        self.horizontalLayout.addWidget(self.label)
-
-        self.search_line_edit = QLineEdit(self.action_bar_frame)
-        self.search_line_edit.setObjectName(u"search_line_edit")
-        self.search_line_edit.setMinimumSize(QSize(0, 30))
-        self.search_line_edit.setMaximumSize(QSize(500, 16777215))
-        self.search_line_edit.setStyleSheet(u"background-color: white;\n"
-"border-radius: 0px;\n"
-"")
-
-        self.horizontalLayout.addWidget(self.search_line_edit)
-
-
-        self.horizontalLayout_2.addLayout(self.horizontalLayout)
+        self.horizontalLayout_2.addWidget(self.new_recipe_button_2)
 
 
         self.verticalLayout_4.addWidget(self.action_bar_frame)
@@ -196,7 +233,8 @@ class MainWindow(object):
         self.maximize_button.setText("")
         self.close_button.setText("")
         self.new_recipe_button.setText(QCoreApplication.translate("MainWindow", u"Nuevo Proceso", None))
-        self.label.setText("")
-        self.search_line_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Buscar receta...", None))
+        self.view_button.setText(QCoreApplication.translate("MainWindow", u"Ver Proceso", None))
+        self.edit_button.setText(QCoreApplication.translate("MainWindow", u"Editar Proceso", None))
+        self.finish_button.setText(QCoreApplication.translate("MainWindow", u"Terminar Proceso", None))
+        self.new_recipe_button_2.setText(QCoreApplication.translate("MainWindow", u"Graficacion", None))
     # retranslateUi
-

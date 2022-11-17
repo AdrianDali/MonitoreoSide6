@@ -1,10 +1,10 @@
 #remover marcos de las ventanas
 
 
-from PySide6.QtCore import Qt
+from PyQt5.QtCore import Qt
 
-
-from PySide6.QtWidgets import QGraphicsDropShadowEffect
+from PyQt5.QtGui import QColor 
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 from database.usuario import DBUsuario 
 from database.pieza import DBPieza 
 from database.maquina import DBMaquina 
@@ -68,7 +68,7 @@ class GeneralCustomUi():
         shadow.setBlurRadius(25)
         shadow.setXOffset(0)
         shadow.setYOffset(0)
-        shadow.setColor("#000000")
+        shadow.setColor(QColor(0,0,0,0))
         # SE LO ENVIAMOS AL FRAME QUE LO CONTIENE
         self.ui.background_frame.setGraphicsEffect(shadow)
 

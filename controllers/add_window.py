@@ -1,6 +1,6 @@
 from string import printable
-from PySide6.QtWidgets import QWidget, QFileDialog
-from PySide6.QtCore import Qt
+from PyQt5.QtWidgets import QWidget, QFileDialog
+from PyQt5.QtCore import Qt
 
 from interface.add_edit_window import AddEditWindow
 from interface.general_custom_ui import GeneralCustomUi
@@ -9,16 +9,25 @@ from database.usuario import DBUsuario
 from database.proceso import DBProceso
 from database.pieza import DBPieza
 from database.maquina import DBMaquina
-
+import threading
 import shutil
+import serial 
 import datetime 
+import RPi.GPIO as GPIO
+import time
+
+
 
 class AddWindowForm(QWidget, AddEditWindow):
 
     def __init__(self, parent=None):
+
         super().__init__(parent)
         self.parent = parent
 
+        #self.ser = serial.Serial("/dev/ttyACM0" , 9600)
+        #self.ser.flushInput()
+        self.contadorM1 = 0 
         self.setupUi(self)
         self.ui = GeneralCustomUi(self)
         self.ui.fill_category_cb()
@@ -33,22 +42,74 @@ class AddWindowForm(QWidget, AddEditWindow):
         self.ui.mouse_press_event(event)
     
     def add_recipe(self):
-        proceso = self.nombre_line_edit.text()
+        self.proceso = self.nombre_line_edit.text()
         operario = DBUsuario("select",self.operario_combo_box.currentText())
         pieza = DBPieza("select" ,self.pieza_combo_box_2.currentText())
         maquina = DBMaquina("select" ,self.maquina_combo_box_3.currentText())
-        hora_inicio = self.inicio_timeEdit.text()
        
-        data = ( maquina._id_maquina,pieza._id_pieza, operario._id_usuario,proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),'')
+        data = ( maquina._id_maquina,pieza._id_pieza, operario._id_usuario,self.proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),'')
         print(data)
 
 
-        proceso = DBProceso("new",maquina._id_maquina,pieza._id_pieza, operario._id_usuario,proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),'')
-
+        self.proceso = DBProceso("new",maquina._id_maquina,pieza._id_pieza, operario._id_usuario,self.proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),'')
+        
+        print("SELECT ID PROCESO ")
+        
+        datos  = self.proceso.select_id_proceso()
+        
+        print("------------------")
             #self.save_img()
             #print("Recipe Added")
         self.clear_inputs()
         self.parent.set_table_data()
+        self.inicioProceso(operario._id_usuario , self.proceso.select_id_proceso())
+        print("cool")
+
+    
+    def inicioProceso(self,idUsuario,idProceso):
+       
+        thread = threading.Thread(target= self.monitoreoProceso , args=(idProceso,idUsuario))
+        thread.start()
+        print("HILO INICIALIZADO")
+
+
+    def monitoreoProceso(self,idProceso,idUsuario):
+        
+        while(True):
+            if GPIO.input(10) == GPIO.HIGH:
+                self.contadorM1 = self.contadorM1 +1  
+                #print("linesss")
+                #lineBytes = self.ser.readline()
+                #print("line antes decode ")
+                #print(lineBytes)
+                #print("LINE ")
+                #line = lineBytes.decode("utf-8").strip()
+                #print("LINEEEEEEE  pesooooooooooo")
+                #print(line)
+
+                #print("line peso")
+
+                #global self.contadorM1 
+                #self.contadorM1 = self.contadorM1 + 1 
+                self.proceso.insertar_monitoreo_proceso()
+                print("monitoreo_proceos")
+                print(self.contadorM1)
+                self.proceso.actualizar_piezas_proceso(self.contadorM1)
+                #if(line != "..."):
+                #    self.proceso.actualizar_peso_proceso(line)
+                #
+                # actualizar_piezas_proceso(contadorM1, idProceso)
+                #actualizar_peso_proceso(line, idProceso)
+                #self.tabla_peliculas()
+                self.actualizar_tabla()
+                self.parent.actualizar_grafica(self.contadorM1)
+                time.sleep(2)
+
+    
+    def actualizar_tabla(self):
+        self.parent.set_table_data()
+
+
 
     def select_img(self):
         #retorna una lista con los datos
