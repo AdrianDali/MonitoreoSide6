@@ -40,10 +40,14 @@ class EditWindowForm(QWidget, AddEditWindow):
         data = ( maquina._id_maquina,pieza._id_pieza, operario._id_usuario,proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),'')
         print("data")
         print(data)
+        observaciones = self.observaciones_text_edit.toPlainText()
+        print("observaciones")
+        print(observaciones)
 
-        proc = DBProceso( mode = "update" , id_proceso= self.recipe_id ,id_maquina =  maquina._id_maquina,  id_pieza = pieza._id_pieza, id_nombre =  operario._id_usuario, nombre =  proceso, observaciones = ' ')
+        proc = DBProceso( mode = "update" , id_proceso= self.recipe_id ,id_maquina =  maquina._id_maquina,  id_pieza = pieza._id_pieza, id_nombre =  operario._id_usuario, nombre =  proceso, observaciones = observaciones)
        
         self.parent.set_table_data()
+        self.close()
 
 
     def set_current_text_cb(self, text):
@@ -62,7 +66,7 @@ class EditWindowForm(QWidget, AddEditWindow):
         self.operario_combo_box.setCurrentText(usuario.nombre)
         self.pieza_combo_box_2.setCurrentText(pieza.nombre)
         self.maquina_combo_box_3.setCurrentText(maquina.nombre)
-       
+        self.observaciones_text_edit.setPlainText(proceso.observaciones)
         
     def clear_inputs(self):
         self.ui.fill_category_cb()

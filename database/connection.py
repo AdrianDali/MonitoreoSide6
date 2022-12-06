@@ -2,9 +2,9 @@ from mysql import connector
 
 
 config = {
-    'user': 'rooot3',
+    'user': 'root',
     'password': '1234',
-    'host': '192.168.1.109',
+    'host': 'localhost',
     'database': 'monitoreo_trabajo',
 }
 

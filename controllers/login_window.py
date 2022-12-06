@@ -18,8 +18,10 @@ from PyQt5 import QtWidgets
 
 class LoginWindowForm(QWidget, LoginWindow):
 
-    def __init__(self, parent=None, recipe_id=None):
+    def __init__(self, parent=None, recipe_id=None,nombre_proceso="", nombre_pieza = ""):
         super().__init__(parent)
+        self.nombre_proceso = nombre_proceso
+        self.nombre_pieza = nombre_pieza
         self.parent = parent 
         self.recipe_id = recipe_id
 
@@ -47,9 +49,15 @@ class LoginWindowForm(QWidget, LoginWindow):
                 print("finish recipe id")
                 print(self.recipe_id)
                 DBProceso("finish" , id_proceso = self.recipe_id)
+                info = DBProceso.select_numero_piezas_merma(self, nombre = self.nombre_proceso, pieza= self.nombre_pieza)
+                peso_normal = info[0][0] * info[0][1] 
+                print("PESO BASE MERMA")
+                print(peso_normal)
                 self.parent.set_table_data()
+                self.close()
             else:
                 print("AUTENTIFICACION FALLIDA  ")
+
     def set_recipe_budget(self, budget):
         #para darle formato a los numeros
         budget = f"${str(budget)}"

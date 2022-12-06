@@ -40,6 +40,11 @@ class DBProceso():
     def hora_inicio(self):
         return self._hora_inicio
 
+    @property
+    def observaciones(self):
+        return self._observaciones
+
+
     def __init__(self, mode = '', id_maquina= 0 , id_pieza = 0 , id_nombre = 0 ,
      nombre = "",hora_inicio = '', observaciones = '', proceso_terminado = 0,
       numero_piezas = 0, peso_merma = 0,id_proceso = 0):
@@ -94,6 +99,53 @@ class DBProceso():
             print(e)
             raise
     
+    def select_numero_piezas_merma(self, nombre, pieza):
+        sql = "select p.numero_piezas, pi.peso_merma from proceso as p join pieza as pi on p.id_pieza = pi.id_pieza where p.nombre = '{}' and  pi.nombre_pieza = '{}';".format(nombre, pieza)
+        objeto_usuario = []
+        try:
+            connection = create_connection()
+            cursor = connection.cursor()
+            cursor.execute(sql)
+            self.nombre_proceso = []
+            self.nombre_proceso =cursor.fetchall()
+            
+            user = self.nombre_proceso
+            if(user == []): 
+                print("no existe nada en la DB")
+                
+            else:
+                self._numero_piezas = user[0][0]
+                self._peso_merma = user[0][1]
+                cursor.close()
+                return user
+        except Exception as e:
+            print(e)
+            raise
+
+    def select_numero_piezas_merma(self, nombre, pieza):
+        sql = "select p.numero_piezas, pi.peso_merma from proceso as p join pieza as pi on p.id_pieza = pi.id_pieza where p.nombre = '{}' and  pi.nombre_pieza = '{}';".format(nombre, pieza)
+        objeto_usuario = []
+        try:
+            connection = create_connection()
+            cursor = connection.cursor()
+            cursor.execute(sql)
+            self.nombre_proceso = []
+            self.nombre_proceso =cursor.fetchall()
+            
+            user = self.nombre_proceso
+            if(user == []): 
+                print("no existe nada en la DB")
+                
+            else:
+                self._numero_piezas = user[0][0]
+                self._peso_merma = user[0][1]
+                print("SELECT NUMERO PIEZAS Y PESO MERMA")
+                print(user)
+                cursor.close()
+                return user
+        except Exception as e:
+            print(e)
+            raise
     
     def select_procesos_unfinish(self):
             sql = 'SELECT p.id_proceso, u.nombre as nombre_usuario,p.nombre, m.nombre_maquina, i.nombre_pieza, p.hora_inicio,p.numero_piezas , p.peso_merma,p.observaciones FROM proceso as p join maquina as m on m.id_maquina = p.id_maquina  join pieza as i on p.id_pieza = i.id_pieza join usuarios as u on u.id_usuario = p.id_nombre  where p.proceso_terminado = 1;'
@@ -155,7 +207,7 @@ class DBProceso():
 
 
     def update_proceso(self):
-        sql = "UPDATE proceso SET id_maquina = {}, id_pieza = {}, id_nombre = {}, nombre = '{}' WHERE id_proceso = {}".format(self._id_maquina, self._id_pieza, self._id_nombre, self._nombre, self._id_proceso)
+        sql = "UPDATE proceso SET id_maquina = {}, id_pieza = {}, id_nombre = {}, nombre = '{}', observaciones = '{}' WHERE id_proceso = {}".format(self._id_maquina, self._id_pieza, self._id_nombre, self._nombre, self._observaciones,self._id_proceso )
         print("idprceosd  ")
         print(self._id_proceso)
         try:
@@ -236,6 +288,7 @@ class DBProceso():
                 self._id_pieza = user[0][2]
                 self._id_nombre = user[0][3]
                 self._hora_inicio = user[0][5]
+                self._observaciones = user[0][9]
                 #print(self.hora_inicio)
                 print(user)
                 cursor.close()

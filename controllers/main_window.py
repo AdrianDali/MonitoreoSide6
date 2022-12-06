@@ -64,7 +64,7 @@ class MainWindowForm(QWidget, MainWindow):
 
         if button:
             recipe_id = self.get_recipe_id_from_table(table, button)
-            loginn = LoginWindowForm(self, recipe_id)
+            loginn = LoginWindowForm(self, recipe_id= recipe_id, nombre_proceso=  "Proceso01", nombre_pieza= "clavija")
             loginn.show()
 
     # configuracion de la tabla
@@ -76,7 +76,13 @@ class MainWindowForm(QWidget, MainWindow):
         self.recipes_table.setHorizontalHeaderLabels(column_labels)
         # cambiar de tamano a la celda
         self.recipes_table.setColumnWidth(1, 200)
-
+        self.recipes_table.setColumnWidth(2, 200)
+        self.recipes_table.setColumnWidth(3, 200)
+        self.recipes_table.setColumnWidth(4, 150)
+        self.recipes_table.setColumnWidth(5, 150)
+        self.recipes_table.setColumnWidth(6, 100)
+        self.recipes_table.setColumnWidth(7, 100)
+        self.recipes_table.setColumnWidth(8, 200)
         self.recipes_table.setColumnWidth(9, 120)
         # cambiar alto de la celda
         self.recipes_table.verticalHeader().setDefaultSectionSize(150)

@@ -13,7 +13,7 @@ import threading
 import shutil
 import serial 
 import datetime 
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 import time
 
 
@@ -46,12 +46,16 @@ class AddWindowForm(QWidget, AddEditWindow):
         operario = DBUsuario("select",self.operario_combo_box.currentText())
         pieza = DBPieza("select" ,self.pieza_combo_box_2.currentText())
         maquina = DBMaquina("select" ,self.maquina_combo_box_3.currentText())
+        observaciones = self.observaciones_text_edit.toPlainText()
+        print("observaciones")
+        print(observaciones)
        
         data = ( maquina._id_maquina,pieza._id_pieza, operario._id_usuario,self.proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),'')
         print(data)
 
 
-        self.proceso = DBProceso("new",maquina._id_maquina,pieza._id_pieza, operario._id_usuario,self.proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),'')
+        self.proceso = DBProceso("new",maquina._id_maquina,pieza._id_pieza, operario._id_usuario,self.proceso,str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),observaciones)
+        
         
         print("SELECT ID PROCESO ")
         
@@ -64,6 +68,7 @@ class AddWindowForm(QWidget, AddEditWindow):
         self.parent.set_table_data()
         self.inicioProceso(operario._id_usuario , self.proceso.select_id_proceso())
         print("cool")
+        self.close()
 
     
     def inicioProceso(self,idUsuario,idProceso):
@@ -76,8 +81,8 @@ class AddWindowForm(QWidget, AddEditWindow):
     def monitoreoProceso(self,idProceso,idUsuario):
         
         while(True):
-            if GPIO.input(10) == GPIO.HIGH:
-                self.contadorM1 = self.contadorM1 +1  
+            #if GPIO.input(10) == GPIO.HIGH:
+             #   self.contadorM1 = self.contadorM1 +1  
                 #print("linesss")
                 #lineBytes = self.ser.readline()
                 #print("line antes decode ")
@@ -91,20 +96,20 @@ class AddWindowForm(QWidget, AddEditWindow):
 
                 #global self.contadorM1 
                 #self.contadorM1 = self.contadorM1 + 1 
-                self.proceso.insertar_monitoreo_proceso()
-                print("monitoreo_proceos")
-                print(self.contadorM1)
-                self.proceso.actualizar_piezas_proceso(self.contadorM1)
+                #self.proceso.insertar_monitoreo_proceso()
+                #print("monitoreo_proceos")
+                #print(self.contadorM1)
+                #self.proceso.actualizar_piezas_proceso(self.contadorM1)
                 #if(line != "..."):
                 #    self.proceso.actualizar_peso_proceso(line)
                 #
                 # actualizar_piezas_proceso(contadorM1, idProceso)
                 #actualizar_peso_proceso(line, idProceso)
                 #self.tabla_peliculas()
-                self.actualizar_tabla()
-                self.parent.actualizar_grafica(self.contadorM1)
-                time.sleep(2)
-
+                #self.actualizar_tabla()
+                #self.parent.actualizar_grafica(self.contadorM1)
+                #time.sleep(2)
+            pass
     
     def actualizar_tabla(self):
         self.parent.set_table_data()
